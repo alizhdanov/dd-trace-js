@@ -439,7 +439,7 @@ module.exports = [
   {
     name: 'graphql',
     file: 'execution/execute.js',
-    versions: ['>=0.10 <=14'],
+    versions: ['>=0.10'],
     patch (execute, tracer, config) {
       this.wrap(execute, 'execute', createWrapExecute(
         tracer,
@@ -455,7 +455,7 @@ module.exports = [
   {
     name: 'graphql',
     file: 'language/parser.js',
-    versions: ['>=0.10 <=14'],
+    versions: ['>=0.10'],
     patch (parser, tracer, config) {
       this.wrap(parser, 'parse', createWrapParse(tracer, validateConfig(config)))
     },
@@ -466,7 +466,7 @@ module.exports = [
   {
     name: 'graphql',
     file: 'validation/validate.js',
-    versions: ['>=0.10 <=14'],
+    versions: ['>=0.10'],
     patch (validate, tracer, config) {
       this.wrap(validate, 'validate', createWrapValidate(tracer, validateConfig(config)))
     },

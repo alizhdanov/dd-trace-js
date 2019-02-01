@@ -47,7 +47,7 @@ function startSpan (tracer, config, client, command, args) {
 module.exports = [
   {
     name: 'redis',
-    versions: ['^2.6'],
+    versions: ['>=2.6'],
     patch (redis, tracer, config) {
       this.wrap(redis.RedisClient.prototype, 'internal_send_command', createWrapInternalSendCommand(tracer, config))
     },

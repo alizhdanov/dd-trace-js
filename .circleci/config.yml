@@ -158,6 +158,14 @@ jobs:
           - SERVICES=
           - PLUGINS=bluebird
 
+  node-bunyan:
+    <<: *node-plugin-base
+    docker:
+      - image: node:8
+        environment:
+          - SERVICES=
+          - PLUGINS=bunyan
+
   node-dns:
     <<: *node-plugin-base
     docker:
@@ -259,6 +267,14 @@ jobs:
           - SERVICES=
           - PLUGINS=net
 
+  node-pino:
+    <<: *node-plugin-base
+    docker:
+      - image: node:8
+        environment:
+          - SERVICES=
+          - PLUGINS=pino
+
   node-postgres:
     <<: *node-plugin-base
     docker:
@@ -309,6 +325,14 @@ jobs:
           - SERVICES=
           - PLUGINS=when
 
+  node-winston:
+    <<: *node-plugin-base
+    docker:
+      - image: node:8
+        environment:
+          - SERVICES=
+          - PLUGINS=winston
+
 workflows:
   version: 2
   build:
@@ -323,6 +347,7 @@ workflows:
       - node-amqplib
       - node-amqp10
       - node-bluebird
+      - node-bunyan
       - node-dns
       - node-elasticsearch
       - node-express
@@ -334,11 +359,13 @@ workflows:
       - node-mongodb-core
       - node-mysql
       - node-net
+      - node-pino
       - node-postgres
       - node-q
       - node-redis
       - node-restify
       - node-when
+      - node-winston
   nightly:
     triggers:
       - schedule:
@@ -356,6 +383,7 @@ workflows:
       - node-amqplib
       - node-amqp10
       - node-bluebird
+      - node-bunyan
       - node-dns
       - node-elasticsearch
       - node-express
@@ -367,8 +395,10 @@ workflows:
       - node-mongodb-core
       - node-mysql
       - node-net
+      - node-pino
       - node-postgres
       - node-q
       - node-redis
       - node-restify
       - node-when
+      - node-winston
